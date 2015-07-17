@@ -1,4 +1,19 @@
+require "scheduler/configuration"
+
 module Scheduler
+  # Configuration
+  class << self
+    attr_writer :configuration
+  end
+
+  def self.configuration
+    @configuration ||= Configuration.new
+  end
+
+  def self.configure
+    yield(configuration)
+  end
+
   require 'sidekiq/exception_handler'
   class SidekiqExceptionHandler
     extend Sidekiq::ExceptionHandler
@@ -14,10 +29,9 @@ module Scheduler
     context ||= {}
     parent_logger ||= SidekiqExceptionHandler
 
-    cm = RailsMultisite::ConnectionManagement
     parent_logger.handle_exception(ex, {
-      current_db: cm.current_db,
-      current_hostname: cm.current_hostname
+      current_db: Scheduler.configuration.current_db.call,
+      current_hostname: Scheduler.configuration.current_hostname.call
     }.merge(context))
   end
 end
