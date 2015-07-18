@@ -5,7 +5,7 @@ module Scheduler
 
     def self.registered(app)
       app.get "/scheduler" do
-        Scheduler.configuration.with_connection.call("default") do
+        Scheduler::Connection.with_connection("default") do
           @manager = Scheduler::Manager.without_runner
           @schedules = Scheduler::Manager.discover_schedules.sort do |a,b|
             a_next = a.schedule_info.next_run
@@ -25,7 +25,7 @@ module Scheduler
       app.post "/scheduler/:name/trigger" do
         halt 404 unless (name = params[:name])
 
-        Scheduler.configuration.with_connection.call("default") do
+        Scheduler::Connection.with_connection("default") do
           klass = name.constantize
           info = klass.schedule_info
           info.next_run = Time.now.to_f

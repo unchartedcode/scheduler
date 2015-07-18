@@ -28,10 +28,11 @@ module Scheduler
   def self.handle_job_exception(ex, context = {}, parent_logger = nil)
     context ||= {}
     parent_logger ||= SidekiqExceptionHandler
+    puts ex
 
     parent_logger.handle_exception(ex, {
-      current_db: Scheduler.configuration.current_db.call,
-      current_hostname: Scheduler.configuration.current_hostname.call
+      current_db: Scheduler::Connection.current_db,
+      current_hostname: Scheduler::Connection.current_hostname
     }.merge(context))
   end
 end
@@ -41,6 +42,9 @@ require "active_record"
 require "rails"
 require "redis"
 require "scheduler/version"
+
+require_dependency 'scheduler/connection'
+require_dependency 'scheduler/clock'
 require_dependency 'scheduler/schedule'
 require_dependency 'scheduler/schedule_info'
 require_dependency 'scheduler/manager'

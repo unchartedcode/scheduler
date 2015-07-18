@@ -64,7 +64,7 @@ module Scheduler
     def do_work(non_block=false)
       db, job, desc = @queue.deq(non_block)
       begin
-        Scheduler.configuration.establish_connection.call(db: db) if db
+        Scheduler::Connection.establish_connection(db: db) if db
         job.call
       rescue => ex
         Scheduler.handle_job_exception(ex, {message: "Running deferred code '#{desc}'"})
