@@ -1,5 +1,3 @@
-require 'byebug'
-
 module Scheduler
   module Deferrable
     def initialize
