@@ -28,7 +28,6 @@ module Scheduler
   def self.handle_job_exception(ex, context = {}, parent_logger = nil)
     context ||= {}
     parent_logger ||= SidekiqExceptionHandler
-    puts ex
 
     parent_logger.handle_exception(ex, {
       current_db: Scheduler::Connection.current_db,
