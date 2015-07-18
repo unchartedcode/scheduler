@@ -17,7 +17,24 @@ And then execute:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add this to the bottom fo your `sidekiq.rb` initializer.
+
+```ruby
+require 'scheduler'
+Scheduler::Clock.start!
+```
+
+Then for each Sidekiq job that you want to schedule add
+
+```ruby
+extend Scheduler::Schedule
+```
+
+along with an interval for how often you want it to run
+
+```ruby
+every 2.hours
+```
 
 ## Development
 
