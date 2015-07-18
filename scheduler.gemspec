@@ -4,14 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'scheduler/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "scheduler"
+  spec.name          = "uncharted-scheduler"
   spec.version       = Scheduler::VERSION
   spec.authors       = ["Nathan Palmer"]
   spec.email         = ["nathan@nathanpalmer.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Scheduling}
+  spec.description   = %q{Allow you to schedule... things.}
+  spec.homepage      = ""
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
