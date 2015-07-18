@@ -1,5 +1,5 @@
 <header class="row">
-  <% if Sidekiq.paused? %>
+  <% if Sidekiq.respond_to?(:paused?) && Sidekiq.paused? %>
     <div class="col-sm-12">
       <div class="alert alert-danger text-center">
         <h2>SIDEKIQ IS PAUSED!</h2>
