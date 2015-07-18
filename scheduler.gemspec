@@ -6,11 +6,11 @@ require 'scheduler/version'
 Gem::Specification.new do |spec|
   spec.name          = "uncharted-scheduler"
   spec.version       = Scheduler::VERSION
-  spec.authors       = ["Nathan Palmer"]
+  spec.authors       = ["Sam Saffron", "Nathan Palmer"]
   spec.email         = ["nathan@nathanpalmer.com"]
 
-  spec.summary       = %q{Scheduling}
-  spec.description   = %q{Allow you to schedule... things.}
+  spec.summary       = %q{Performance friendly recurring jobs for Sidekiq}
+  spec.description   = %q{Allows you to define recurring workers for Sidekiq without requiring a dedicated job server}
   spec.homepage      = ""
   spec.license       = "MIT"
 
