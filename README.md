@@ -1,6 +1,7 @@
 # Uncharted Scheduler
 
 [![Build Status](https://travis-ci.org/unchartedcode/scheduler.svg?branch=master)](https://travis-ci.org/unchartedcode/scheduler)
+[![Coverage Status](https://coveralls.io/repos/unchartedcode/scheduler/badge.svg?branch=master&service=github)](https://coveralls.io/github/unchartedcode/scheduler?branch=master)
 
 Uncharted Scheduler allows for scheduling of recurring jobs with [Sidekiq](https://github.com/mperham/sidekiq). This library was extracted out of [Discourse](https://github.com/discourse/discourse).
 

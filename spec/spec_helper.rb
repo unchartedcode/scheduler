@@ -3,6 +3,8 @@ require 'scheduler'
 require 'redis'
 require 'sqlite3'
 require 'mock_redis'
+require 'coveralls'
+Coveralls.wear!
 
 ActiveRecord::Base.configurations = YAML.load_file("config/database.yml")
 ActiveRecord::Base.establish_connection(:test)
