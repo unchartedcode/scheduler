@@ -2,6 +2,7 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'scheduler'
 require 'redis'
 require 'sqlite3'
+require 'mock_redis'
 
 ActiveRecord::Base.configurations = YAML.load_file("config/database.yml")
 ActiveRecord::Base.establish_connection(:test)
@@ -29,4 +30,4 @@ RSpec.configure do |config|
   end
 end
 
-$redis = Redis.new
+$redis = MockRedis.new
