@@ -211,6 +211,14 @@ module Scheduler
           redis.zrem Manager.queue_key(hostname), key
           return
         end
+
+        unless klass.respond_to?(:daily) &&
+               klass.respond_to?(:every)
+          # job klass exists but no longer extends from the base
+          redis.zrem Manager.queue_key(hostname), key
+          return
+        end
+
         info = schedule_info(klass)
         info.prev_run = Time.now.to_i
         info.prev_result = "QUEUED"

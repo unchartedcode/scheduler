@@ -51,6 +51,9 @@ describe Scheduler::Manager do
         self.class.runs += 1
       end
     end
+
+    class InvalidJob
+    end
   end
 
   let(:manager) { Scheduler::Manager.new($redis) }
@@ -110,6 +113,12 @@ describe Scheduler::Manager do
 
     it 'should nuke missing jobs' do
       $redis.zadd Scheduler::Manager.queue_key, Time.now.to_i - 1000, "BLABLA"
+      manager.tick
+      expect($redis.zcard(Scheduler::Manager.queue_key)).to eq(0)
+    end
+
+    it 'should nuke invalid jobs' do
+      $redis.zadd Scheduler::Manager.queue_key, Time.now.to_i - 1000, "Testing::InvalidJob"
       manager.tick
       expect($redis.zcard(Scheduler::Manager.queue_key)).to eq(0)
     end
