@@ -10,8 +10,7 @@ Uncharted Scheduler allows for scheduling of recurring jobs with [Sidekiq](https
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'uncharted-scheduler',
-    git: 'https://github.com/unchartedcode/scheduler'
+gem 'uncharted-scheduler'
 ```
 
 And then execute:
