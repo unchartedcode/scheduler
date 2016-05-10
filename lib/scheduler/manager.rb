@@ -61,9 +61,6 @@ module Scheduler
           info.prev_result = "RUNNING"
           @mutex.synchronize { info.write! }
           klass.new.perform
-        # rescue Jobs::HandledExceptionWrapper
-        #   # Discourse.handle_exception was already called, and we don't have any extra info to give
-        #   failed = true
         rescue => e
           Scheduler.handle_job_exception(e, {message: "Running a scheduled job", job: klass})
           failed = true
