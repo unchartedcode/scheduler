@@ -2,7 +2,6 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'scheduler'
 require 'redis'
 require 'sqlite3'
-require 'mock_redis'
 require 'coveralls'
 Coveralls.wear!
 
@@ -32,4 +31,4 @@ RSpec.configure do |config|
   end
 end
 
-$redis = MockRedis.new
+$redis = Redis.new(url: 'redis://localhost:6379/0', db: 8)
