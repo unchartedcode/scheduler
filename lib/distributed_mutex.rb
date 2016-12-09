@@ -3,11 +3,11 @@ require 'byebug'
 
 # Cross-process locking using Redis.
 class DistributedMutex
-  def self.synchronize(key, redis=nil, timeout=60000, &blk)
+  def self.synchronize(key, redis=nil, timeout=60, &blk)
     self.new(key, redis, timeout).synchronize(&blk)
   end
 
-  def initialize(key, redis=nil, timeout=60000)
+  def initialize(key, redis=nil, timeout=60)
     @key = key
     @redis = redis || $redis
     @lock_manager = Redlock::Client.new([@redis])
