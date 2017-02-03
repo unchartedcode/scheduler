@@ -1,5 +1,4 @@
 require 'redlock'
-require 'byebug'
 
 # Cross-process locking using Redis.
 class DistributedMutex
