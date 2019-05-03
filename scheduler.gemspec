@@ -19,15 +19,15 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.10"
+  spec.add_development_dependency "bundler", "~> 1.17.3"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "sqlite3"
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "coveralls"
 
-  spec.add_dependency "rails", "< 5.0"
+  spec.add_dependency "rails", ">= 4.2", "< 6.0"
   spec.add_dependency "redis"
   spec.add_dependency "sidekiq"
-  spec.add_dependency "redlock", "0.1.8"
+  spec.add_dependency "redlock", "~> 1.0.0"
 end
