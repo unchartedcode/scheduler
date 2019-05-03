@@ -26,8 +26,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "coveralls"
 
-  spec.add_dependency "rails", "< 5.0"
+  spec.add_dependency "rails", ">= 4.2", "< 6.0"
   spec.add_dependency "redis"
   spec.add_dependency "sidekiq"
-  spec.add_dependency "redlock", "0.1.8"
+  spec.add_dependency "redlock", "~> 1.0.0"
 end
